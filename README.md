@@ -1,12 +1,16 @@
 # exodia-wireless
 Wireless Editions for Wireless Pentesting
 
-### how to build 
+### before building download [eDEX-UI](https://github.com/GitSquared/edex-ui/releases)
+
+#### copy [**`eDEX-UI-Linux-x86_64.AppImage`**](https://github.com/GitSquared/edex-ui/releases) to `src/airootfs/usr/local/bin/`
+
+# building
 
 ~~~bash
 
 mkdir {work,out} 
 
-sudo ./makeExodiaISO -v -w work -o out src 
+sudo mkarchiso -v -w work -o out src 
 
 ~~~
