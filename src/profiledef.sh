@@ -3,7 +3,7 @@
 
 iso_name="exodia-wireless"
 iso_label="Exodia-Wireless$(date +%Y%m)"
-iso_publisher="Mahmoud Mohamed <https://github.com/mmsaeed509>"
+iso_publisher="Mahmoud Mohamed (00xWolf) <https://github.com/mmsaeed509>"
 iso_application="Exodia Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
 install_dir="arch"

@@ -21,14 +21,31 @@ if [[ ! -d "$rdir" ]]; then
 	mkdir "$rdir"
 fi
 
-rconfig=('alacritty' 'bspwm' 'geany' 'gtk-3.0' 'Kvantum' 'neofetch' 'qt5ct' 'ranger' 'Thunar' 'xfce4' 'nvim' 'caja' 'cava' 'conky' 'gtk-2.0')
+rconfig=(
+
+	'alacritty' 'bspwm' 'geany' 'gtk-3.0' 
+	'Kvantum' 'neofetch' 'qt5ct' 'ranger' 
+	'Thunar' 'xfce4' 'nvim' 'caja' 'cava' 
+	'rofi' 'gtk-2.0' 'dunst' 'sxhkd' 
+	'networkmanager-dmenu' 'mimeapps.list'
+)
+
 for cfg in "${rconfig[@]}"; do
 	if [[ -e "$sdir/.config/$cfg" ]]; then
 		cp -rf "$sdir"/.config/"$cfg" "$rdir"
 	fi
 done
 
-rcfg=('.oh-my-zsh' '.gtkrc-2.0' '.vim_runtime' '.vimrc' '.zshrc' '.p10k.zsh' 'Templates' '.local/share/nvim' '.ncmpcpp' '.mplayer' '.mpd')
+rcfg=(
+
+	'.oh-my-zsh' '.gtkrc-2.0' '.vim_runtime' 
+	'.vimrc' '.zshrc' '.p10k.zsh' 'Templates' 
+	'.local/share/nvim' '.ncmpcpp' '.mplayer' 
+	'.mpd' 'Music' '.face' '.Xresources.d'
+	'.dmrc' '.fehbg' '.Xresources' '.xsettingsd'
+
+)
+
 for cfile in "${rcfg[@]}"; do
 	if [[ -e "$sdir/$cfile" ]]; then
 		cp -rf "$sdir"/"$cfile" /root
@@ -48,7 +65,8 @@ xdg-user-dirs-gtk-update
 
 sed -i -e 's/exodia-welcome/exodia-help/g' /etc/skel/.config/bspwm/bspwmrc
 
-## copy grub theme to boot dir ##
-cp -r /usr/share/grub/themes/exodia /boot/grub/themes/
+## fix exodia-grub-theme ##
+# cp -r /usr/share/grub/themes/exodia /boot/grub/themes/
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## -------------------------------------------------------------- ##
