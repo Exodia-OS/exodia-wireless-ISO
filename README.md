@@ -7,9 +7,19 @@ Wireless Editions for Wireless Pentesting
 > as many users have tried to build the ISO on non-arch-based distros and run into issues.**
 
 
-### before building download [eDEX-UI](https://github.com/GitSquared/edex-ui/releases)
+### before building:-
 
-#### copy [**`eDEX-UI-Linux-x86_64.AppImage`**](https://github.com/GitSquared/edex-ui/releases) to `src/airootfs/usr/local/bin/`
+- #### install [**`archiso`**](https://wiki.archlinux.org/title/archiso)
+    - ##### `sudo pacman -S archiso`
+
+- #### download [eDEX-UI](https://github.com/GitSquared/edex-ui/releases)
+    - ##### copy [**`eDEX-UI-Linux-x86_64.AppImage`**](https://github.com/GitSquared/edex-ui/releases) to `src/airootfs/usr/local/bin/`
+
+- #### Use the hosted Repos
+    - ##### uncommented these lines
+     ![](IMGs/1.png)
+    - ##### then, commented these lines
+     ![](IMGs/2.png)
 
 # building
 
