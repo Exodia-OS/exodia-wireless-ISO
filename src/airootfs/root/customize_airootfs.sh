@@ -53,17 +53,13 @@ for cfile in "${rcfg[@]}"; do
 done
 
 ## make eDEX-UI executable ## 
-chmod +x /usr/local/bin/eDEX-UI-Linux-x86_64.AppImage
+# chmod +x /usr/local/bin/eDEX-UI-Linux-x86_64.AppImage
 
 ## Update xdg-user-dirs for bookmarks in thunar and pcmanfm ##
 runuser -l liveuser -c 'xdg-user-dirs-update'
 runuser -l liveuser -c 'xdg-user-dirs-gtk-update'
 xdg-user-dirs-update
 xdg-user-dirs-gtk-update
-
-## launch Help app on installed system instead of launching welcome app ##
-
-sed -i -e 's/exodia-welcome/exodia-help/g' /etc/skel/.config/bspwm/bspwmrc
 
 ## fix exodia-grub-theme ##
 # cp -r /usr/share/grub/themes/exodia /boot/grub/themes/
