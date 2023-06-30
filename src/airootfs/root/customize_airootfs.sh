@@ -26,8 +26,13 @@ sed -i -e 's#SHELL=.*#SHELL=/bin/zsh#g' /etc/default/useradd
 ## Copy Few Configs Into Root Dir ##
 rdir="/root/.config"
 sdir="/etc/skel"
-if [[ ! -d "$rdir" ]]; then
-	mkdir "$rdir"
+
+if [[ ! -d "$rdir" ]];
+	
+	then
+		
+		mkdir "$rdir"
+
 fi
 
 rconfig=(
@@ -39,10 +44,18 @@ rconfig=(
 	'networkmanager-dmenu' 'mimeapps.list'
 )
 
-for cfg in "${rconfig[@]}"; do
-	if [[ -e "$sdir/.config/$cfg" ]]; then
-		cp -rf "$sdir"/.config/"$cfg" "$rdir"
-	fi
+for cfg in "${rconfig[@]}";
+	
+	do
+		
+		if [[ -e "$sdir/.config/$cfg" ]];
+			
+			then
+				
+				cp -rf "$sdir"/.config/"$cfg" "$rdir"
+
+		fi
+		
 done
 
 rcfg=(
@@ -55,10 +68,18 @@ rcfg=(
 
 )
 
-for cfile in "${rcfg[@]}"; do
-	if [[ -e "$sdir/$cfile" ]]; then
-		cp -rf "$sdir"/"$cfile" /root
-	fi
+for cfile in "${rcfg[@]}";
+	
+	do
+	
+		if [[ -e "$sdir/$cfile" ]];
+			
+			then
+				
+				cp -rf "$sdir"/"$cfile" /root
+
+		fi
+		
 done
 
 ## make eDEX-UI executable ## 
@@ -72,9 +93,22 @@ xdg-user-dirs-gtk-update
 
 ## disable `exodia-welcome` and enable `exodia-assistant` ##
 sed -i 's/exodia-welcome/exodia-assistant/g' /etc/skel/.config/bspwm/bspwmrc
+sed -i 's/exodia-welcome/exodia-assistant/g' /etc/skel/.config/i3/bin/autostart.sh
 
 ## update `~/.bashrc` config ##
 cat >> " /etc/skel/.bashrc" <<- EOL
+
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+[ -r /home/ozil/.byobu/prompt ] && . /home/ozil/.byobu/prompt   #byobu-prompt#
+
 
 ## ------------ Alias ------------ ##
 
@@ -163,18 +197,26 @@ On_IBlack='\033[0;100m' On_IRed='\033[0;101m' On_IGreen='\033[0;102m' On_IYellow
 On_IBlue='\033[0;104m' On_IPurple='\033[0;105m' On_ICyan='\033[0;106m' On_IWhite='\033[0;107m'
 
 # load on startup #
-echo -e ${Purple} "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━┓"
-echo -e ${Purple} "┃                                                                                ┃ ${Cyan}  ${BBlue}Exodia Fetch ${Purple}┃  ${BGreen}  ${BYellow}  ${BRed}  ${Purple}┃"${RESET_COLOR}
-echo -e ${Purple} "┃  ██╗ ██╗     ███████╗██╗  ██╗ ██████╗ ██████╗ ██╗ █████╗      ██████╗ ███████╗ ┣━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━┫"${RESET_COLOR}
-echo -e ${Purple} "┃ ████████╗    ██╔════╝╚██╗██╔╝██╔═══██╗██╔══██╗██║██╔══██╗    ██╔═══██╗██╔════╝ ┃                             ┃"${RESET_COLOR}
-echo -e ${Purple} "┃ ╚██╔═██╔╝    █████╗   ╚███╔╝ ██║   ██║██║  ██║██║███████║    ██║   ██║███████╗ ┃ ${Cyan}  ${BIGreen}@author MAHMOUD MOHAMED  ${Purple}┃"${RESET_COLOR}
-echo -e ${Purple} "┃ ████████╗    ██╔══╝   ██╔██╗ ██║   ██║██║  ██║██║██╔══██║    ██║   ██║╚════██║ ┃ ${Cyan}  ${Blue}Developed by : ${BIGreen}00xWolf   ${Purple}┃"${RESET_COLOR}
-echo -e ${Purple} "┃ ╚██╔═██╔╝    ███████╗██╔╝ ██╗╚██████╔╝██████╔╝██║██║  ██║    ╚██████╔╝███████║ ┃ ${Cyan}  ${Blue}GitHub : ${BIGreen}@mmsaeed509     ${Purple}┃"${RESET_COLOR}
-echo -e ${Purple} "┃  ╚═╝ ╚═╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝  ╚═╝     ╚═════╝ ╚══════╝ ┃ ${Cyan}﫥 ${BIGreen}Cyb3rTh1eveZ Team        ${Purple}┃"${RESET_COLOR}
-echo -e ${Purple} "┃                                                                                ┃                             ┃"${RESET_COLOR}
-echo -e ${Purple} "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"${RESET_COLOR}
 
-echo -e "\n Welcome back ${BIGreen}Mr.${USER} ${RESET_COLOR}\n"
+echo -e "
+    _/_/_/_/                            _/  _/                  _/_/      _/_/_/   
+   _/        _/    _/    _/_/      _/_/_/        _/_/_/      _/    _/  _/          
+  _/_/_/      _/_/    _/    _/  _/    _/  _/  _/    _/      _/    _/    _/_/       
+ _/        _/    _/  _/    _/  _/    _/  _/  _/    _/      _/    _/        _/      
+_/_/_/_/  _/    _/    _/_/      _/_/_/  _/    _/_/_/        _/_/    _/_/_/                                                                                   
+"
+# echo -e ${Purple} "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━┓"
+# echo -e ${Purple} "┃                                                                                ┃ ${Cyan}  ${BBlue}Exodia Fetch ${Purple}┃  ${BGreen}  ${BYellow}  ${BRed}  ${Purple}┃"${RESET_COLOR}
+# echo -e ${Purple} "┃  ██╗ ██╗     ███████╗██╗  ██╗ ██████╗ ██████╗ ██╗ █████╗      ██████╗ ███████╗ ┣━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━┫"${RESET_COLOR}
+# echo -e ${Purple} "┃ ████████╗    ██╔════╝╚██╗██╔╝██╔═══██╗██╔══██╗██║██╔══██╗    ██╔═══██╗██╔════╝ ┃                             ┃"${RESET_COLOR}
+# echo -e ${Purple} "┃ ╚██╔═██╔╝    █████╗   ╚███╔╝ ██║   ██║██║  ██║██║███████║    ██║   ██║███████╗ ┃ ${Cyan}  ${BIGreen}@author MAHMOUD MOHAMED  ${Purple}┃"${RESET_COLOR}
+# echo -e ${Purple} "┃ ████████╗    ██╔══╝   ██╔██╗ ██║   ██║██║  ██║██║██╔══██║    ██║   ██║╚════██║ ┃ ${Cyan}  ${Blue}Developed by : ${BIGreen}00xWolf   ${Purple}┃"${RESET_COLOR}
+# echo -e ${Purple} "┃ ╚██╔═██╔╝    ███████╗██╔╝ ██╗╚██████╔╝██████╔╝██║██║  ██║    ╚██████╔╝███████║ ┃ ${Cyan}  ${Blue}GitHub : ${BIGreen}@mmsaeed509     ${Purple}┃"${RESET_COLOR}
+# echo -e ${Purple} "┃  ╚═╝ ╚═╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝╚═╝  ╚═╝     ╚═════╝ ╚══════╝ ┃ ${Cyan}﫥 ${BIGreen}Cyb3rTh1eveZ Team        ${Purple}┃"${RESET_COLOR}
+# echo -e ${Purple} "┃                                                                                ┃                             ┃"${RESET_COLOR}
+# echo -e ${Purple} "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"${RESET_COLOR}
+
+# echo -e "Welcome back ${BIGreen}Mr.${USER} ${RESET_COLOR}\n"
 
 # change sudo prompt #
 export SUDO_PROMPT="[] Enter sudo Password, Mr.${USER}: "
