@@ -178,6 +178,9 @@ pulseaudio-bluetooth
 
 # -------- WMs & WMs dependences -------- #
 
+xfce4
+xfce4-goodies
+
 bspwm
 sxhkd
 rofi
