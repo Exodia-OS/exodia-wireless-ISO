@@ -124,7 +124,7 @@ zsh
 
 
 exodia-repo/sbc
-exodia-repo/rtkit
+# exodia-repo/rtkit
 
 # -------- Xorg Packages -------- #
 
