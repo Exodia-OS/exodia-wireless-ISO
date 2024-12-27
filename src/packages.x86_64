@@ -417,6 +417,9 @@ yay
 cava
 lsd
 
+plocate
+gnome-disk-utility
+
 # -------- Calamares -------- #
 
 boost
