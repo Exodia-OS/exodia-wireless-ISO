@@ -180,7 +180,6 @@ wget
 bluez
 bluez-utils
 blueman
-pulseaudio-bluetooth
 
 # -------- WMs & WMs dependences -------- #
 
@@ -222,9 +221,10 @@ alsa-plugins
 alsa-tools
 alsa-utils
 pavucontrol
-pulseaudio
-pulseaudio-alsa
-pulseaudio-equalizer-ladspa
+wireplumber
+pipewire-pulse
+pipewire-alsa
+
 
 # -------- Files -------- #
 
